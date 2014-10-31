@@ -1,0 +1,12 @@
+{
+    "name": "emi/formulario",
+    "require": {
+        "phpmailer/phpmailer": "~5.2"
+    },
+    "authors": [
+        {
+            "name": "ipotaje",
+            "email": "ipotaje@gmail.com"
+        }
+    ]
+}

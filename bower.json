@@ -1,0 +1,13 @@
+{
+  "name": "new",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap-sass-official": "latest",
+    "jquery": "latest",
+    "requirejs": "latest",
+    "requirejs-text": "latest",
+    "underscore": "latest",
+    "backbone": "latest"
+  },
+  "devDependencies": {}
+}
