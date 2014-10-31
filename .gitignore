@@ -28,8 +28,8 @@ composer.lock
 .*
 !.gitignore
 !.git*
-!.editorconfig
-!.jshintrc
+.editorconfig
+.jshintrc
 !.npmignore
 !.travis.yml
 *~
