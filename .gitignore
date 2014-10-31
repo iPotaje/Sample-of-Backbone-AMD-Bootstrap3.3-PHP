@@ -20,6 +20,9 @@ node_modules
 ### Bower ###
 app/bower_components
 
+### Composer ###
+vendor/
+composer.lock
 
 ### Linux ###
 .*
@@ -40,3 +43,4 @@ app/bower_components
 ### Yeoman ###
 dist
 test/temp
+test/
