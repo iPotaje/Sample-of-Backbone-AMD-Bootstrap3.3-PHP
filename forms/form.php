@@ -50,46 +50,6 @@ $page =	json_decode(file_get_contents($url2), true);
 		<div id="feedback">
 			<!-- Heading Of The Form -->
 			<div class="head">
-<!-- 			
-			<h3>Contacta</h3>
-			<p>Este es un formulario de contacto</p>
-			</div>
-			
-			<form action="#" id="form" method="post" name="form">
-				<input name="vname" placeholder="Nombre:" type="text" value="">
-				<input name="vemail" placeholder="Correo electrónico:" type="text" value="">
-				<input name="sub" placeholder="Título" type="text" value="">
-				<label>Comentario:</label>
-				<textarea name="msg" placeholder="Escribe tu comentario aquí..."></textarea>
-				<input id="send" name="submit" type="submit" value="Enviar">
-			</form> 
-			-->
-			<?php
-				// print_r($page);
-				//echo $page[0]['content'];
-			?>
-<!-- <form action="#" id="form" method="post" name="form">
-
-	*Nombre:<br><input name="vname" placeholder="Nombre:" type="text" value="">
-
-	Teléfono:<br><input name="telefono" placeholder="Teléfono:" type="text" value="">
-
-	*Correo electrónico:<br><input name="vemail" placeholder="Correo electrónico:" type="text" value="">
-
-	Nombre del recurso:<input name="sub" placeholder="Título" type="text" value="">
-
-	Localización:Latitud:Longitud:
-
-	Fuente:<br>
-
-	<label>Comentario:</label>
-	<textarea name="msg" placeholder="Escribe tu comentario aquí..."></textarea>
-
-	<input id="send" name="submit" type="submit" value="Enviar">
-</form> 
-<br><br><br> -->
-
-
     <form class="form-horizontal" action="#" id="form" method="post" name="form">
 
         <div class="form-group<?php echo (isset($_POST['submit']) && (trim($_POST['vname'])=='')?' has-error':'')?>">
