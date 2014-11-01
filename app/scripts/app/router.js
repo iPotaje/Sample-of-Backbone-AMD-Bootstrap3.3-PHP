@@ -35,10 +35,12 @@ define(function (require) {
 
             shellView.shellDisplay();
 
-            if(this.viewWaiting){
+            // if(this.viewWaiting){
 
-                this.showView(this.viewWaiting);
-            }
+            //     this.showView(this.viewWaiting);
+            // }
+            Backbone.history.start();
+            console.log('once');
         },
 
         routes: {
@@ -53,12 +55,12 @@ define(function (require) {
 
         showView: function (view) {
             
-            if (!this.started){
+            // if (!this.started){
                 
-                this.viewWaiting = view;
+            //     this.viewWaiting = view;
 
-                return;
-            }
+            //     return;
+            // }
 
             if (this.currentView){
         

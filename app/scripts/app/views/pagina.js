@@ -20,6 +20,9 @@ define(function (require) {
                         jumboText:      this.model.get('content')
                 
                     });
+                if (this.model.get('identifier') === 'colabora'){
+                    shellView.displayForm();
+                }
             }
 
             return this;

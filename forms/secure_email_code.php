@@ -1,10 +1,13 @@
 <?php
 require '../vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
 
+$out = '';
+$error = false;
 if(isset($_POST["submit"])){
 // Checking For Blank Fields..
 	if($_POST["vname"]==""||$_POST["vemail"]==""||$_POST["sub"]==""||$_POST["msg"]==""){
-		echo searchForValue('email_incomplete', $data);
+		$out = searchForValue('email_incomplete', $data);
+		$error = true;
 	}else{
 // Check if the "Sender's Email" input field is filled out
 		$email=$_POST['vemail'];
@@ -13,7 +16,8 @@ if(isset($_POST["submit"])){
 // Validate E-mail Address
 		$email= filter_var($email, FILTER_VALIDATE_EMAIL);
 		if (!$email){
-			echo searchForValue('email_incomplete', $data);
+			$out = searchForValue('email_incomplete', $data);
+			$error = true;
 		}
 		else{
 			// $subject = $_POST['sub'];
@@ -31,32 +35,45 @@ if(isset($_POST["submit"])){
 			
 			$mail = new PHPMailer;
 
-			// $mail->SMTPDebug = 3;                               // Enable verbose debug output
+			//$mail->SMTPDebug = 3;                               			// Enable verbose debug output
 
-			$mail->isSMTP();                                      // Set mailer to use SMTP
+			$mail->isSMTP();                                      			// Set mailer to use SMTP
 			$mail->Host 		= searchForValue('email_smtphost', $data);  // Specify main and backup SMTP servers
-			$mail->SMTPAuth 	= searchForValue('email_SMTPAuth', $data);                               // Enable SMTP authentication
-			$mail->Username 	= searchForValue('email_user', $data);                 // SMTP username
-			$mail->Password 	= searchForValue('email_password', $data);                           // SMTP password
-			$mail->SMTPSecure 	= searchForValue('email_SMTPSecure', $data);                            // Enable TLS encryption, `ssl` also accepted
-			$mail->Port 		= searchForValue('email_port', $data);                                    // TCP port to connect to
+			$mail->SMTPAuth 	= searchForValue('email_SMTPAuth', $data);  // Enable SMTP authentication
+			$mail->Username 	= searchForValue('email_user', $data);      // SMTP username
+			$mail->Password 	= searchForValue('email_password', $data);  // SMTP password
+			$mail->SMTPSecure 	= searchForValue('email_SMTPSecure', $data);// Enable TLS encryption, `ssl` also accepted
+			$mail->Port 		= searchForValue('email_port', $data);      // TCP port to connect to
 
 			$mail->From = $email;
 			$mail->FromName = $_POST["vname"];
 			$mail->addAddress('egomecor@gmail.com', 'Administrador Mapping LPA');     // Add a recipient
 
-			$mail->Subject = $_POST['sub'];
-			$mail->Body    = $_POST['msg'];
+			$mail->Subject = utf8_decode($_POST['sub']);
+			$mail->Body    .= (isset($_POST['vname'])?"Nombre: " . $_POST['vname']:"")
+							. (isset($_POST['telf'])?"\nTeléfono: " . $_POST['telf']:"")
+							. (isset($_POST['vemail'])?"\nCorreo electrónico: " . $_POST['vemail']:"")
+							. (isset($_POST['sub'])?"\nNombre del recurso: " . $_POST['sub']:"")
+							. (isset($_POST['lat'])?"\nLatitud: " . $_POST['lat']:"")
+							. (isset($_POST['long'])?"\nLongitud: " . $_POST['long']:"")
+							. (isset($_POST['fuente'])?"\nFuente: " . $_POST['fuente']:"")
+							. (isset($_POST['msg'])?"\nComentario: " . $_POST['msg']:"");
 			// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 			if(!$mail->send()) {
-			    echo searchForValue('email_error', $data);
-			    echo 'Error: ' . $mail->ErrorInfo;
+			    $out = searchForValue('email_error', $data) . '<br>';
+			    $out .= 'Error: ' . $mail->ErrorInfo;
+			    $error = true;
 			} else {
-			    echo searchForValue('email_correcto', $data);
+			    $out = searchForValue('email_correcto', $data);
 			}
 		}
 	}
+	$class = 'alert-success';
+	if ($error){
+		$class = 'alert-danger';
+	}
+	echo "<br><br><div class=\"alert $class\" role=\"alert\">$out</div><br><br><br><br>";
 }
 
 

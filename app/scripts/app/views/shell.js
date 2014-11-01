@@ -5,6 +5,7 @@ define(function (require) {
         Backbone            = require('backbone'),
         tplDefault          = require('text!tpl/default.htm'),
         tplShell            = require('text!tpl/shell.htm'),
+        tplIframe           = require('text!tpl/iframe.htm'),
 
         template = _.template(tplDefault);
 
@@ -39,9 +40,14 @@ define(function (require) {
         changeTitles: function (titles) {
             $('h3.text-muted').text(titles.title);
             $('.jumbotron h1').text(titles.jumboTitle);
-            $('.jumbotron p').text(titles.jumboText);
+            // $('.jumbotron p').text(titles.jumboText);
+            $('#contenido').html(titles.jumboText);
 
             return this;
+        },
+
+        displayForm: function () {
+            $('#contenido').append(tplIframe);
         }
 
     });
