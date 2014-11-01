@@ -8,5 +8,8 @@
             "name": "ipotaje",
             "email": "ipotaje@gmail.com"
         }
-    ]
+    ],
+     "config" : {
+        "vendor-dir" : "app/vendor"
+    }
 }

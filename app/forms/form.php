@@ -30,20 +30,20 @@ $page =	json_decode(file_get_contents($url2), true);
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<!-- build:css(.tmp) styles/main.css -->
-	<link rel="stylesheet" href="../.tmp/styles/main.css">
+	<link rel="stylesheet" href="../../.tmp/styles/main.css">
 	<!-- endbuild -->
 </head>
 <body>
 <script>
-//     window.onload = function() {
-//     if (parent) {
-//         var oHead = document.getElementsByTagName("head")[0];
-//         var arrStyleSheets = parent.document.getElementsByTagName("link");
-//         for (var i = 0; i < arrStyleSheets.length; i++){    
-//             oHead.appendChild(arrStyleSheets[i].cloneNode(true));
-//         }            
-//     }    
-// }
+    window.onload = function() {
+    if (parent) {
+        var oHead = document.getElementsByTagName("head")[0];
+        var arrStyleSheets = parent.document.getElementsByTagName("link");
+        for (var i = 0; i < arrStyleSheets.length; i++){    
+            oHead.appendChild(arrStyleSheets[i].cloneNode(true));
+        }            
+    }    
+}
 </script>
 	<div class="container">
 		<!-- Feedback Form Starts Here -->
